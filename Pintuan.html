@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pintuan</title>
+  <style>
+    body, html {
+      margin: 0;
+      padding: 0;
+      height: 100vh;
+      overflow: hidden;
+      background: black;
+    }
+    video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: none;
+    }
+    .door {
+      position: absolute;
+      top: 0;
+      width: 50%;
+      height: 100%;
+      background: darkgray;
+      transition: transform 1s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      z-index: 10;
+    }
+    #left { left: 0; border-right: 1px solid black; }
+    #right { right: 0; border-left: 1px solid black; }
+    .handle {
+      width: 12px;
+      height: 50px;
+      background: gray;
+      border-radius: 5px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Replace this file path with a valid local or hosted path -->
+  <video id="video" autoplay muted controls loop>
+    <source src="ssstik.io_@rndmoffcial03_1752852770562.mp4" type="video/mp4" />
+    Your browser does not support the video tag.
+  </video>
+
+  <div id="left" class="door"><div class="handle"></div></div>
+  <div id="right" class="door"><div class="handle"></div></div>
+
+  <script>
+    const left = document.getElementById('left');
+    const right = document.getElementById('right');
+    const video = document.getElementById('video');
+
+    function openDoors() {
+      left.style.transform = 'translateX(-100%)';
+      right.style.transform = 'translateX(100%)';
+      video.style.display = 'block'; // Make video appear
+      video.play(); // Start playing video
+    }
+
+    left.addEventListener('click', openDoors);
+    right.addEventListener('click', openDoors);
+  </script>
+</body>
+</html>
